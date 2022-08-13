@@ -38,7 +38,7 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = (
           <p>{props.project.description}</p>
         </div>
         <DividerLine />
-        <div className="flex flex-row leading-[2] sm:p-4">
+        <div className="flex flex-row flex-wrap justify-center leading-[2] sm:p-4">
           {props.project.technologies.map((tech: string) => (
             <TechnologyPill key={tech} tech={tech} />
           ))}

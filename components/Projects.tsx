@@ -19,7 +19,7 @@ const Projects: FC<ProjectsProps & ErrorProps> = (props) => {
             <ProjectCard
               project={project}
               key={project.id}
-              className="max-w-[30rem] flex-[0_1_95%]"
+              className="w-screen flex-[0_1_95%] md:max-w-[30rem]"
             />
           ))}
       </div>

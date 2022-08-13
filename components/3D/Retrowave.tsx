@@ -71,18 +71,20 @@ export default function Model({
         ref={lightRef}
       />
 
-      <EffectComposer>
-        <SelectiveBloom
-          lights={[lightRef]}
-          selection={[sunRef, mountainsRef]}
-          intensity={7}
-          selectionLayer={1}
-          luminanceThreshold={0}
-          luminanceSmoothing={1}
-          height={1080}
-          width={1920}
-        />
-      </EffectComposer>
+      {lightRef.current && (
+        <EffectComposer>
+          <SelectiveBloom
+            lights={[lightRef]}
+            selection={[sunRef, mountainsRef]}
+            intensity={7}
+            selectionLayer={1}
+            luminanceThreshold={0}
+            luminanceSmoothing={1}
+            height={1080}
+            width={1920}
+          />
+        </EffectComposer>
+      )}
     </>
   )
 }
