@@ -30,8 +30,7 @@
     "three-stdlib": "^2.8.6"
   },
   "devDependencies": {
-    "@next/swc-win32-x64-msvc": "12.0.8",
-    "@types/react": "17.0.38",
+    "@types/react": "^18.0.17",
     "autoprefixer": "10.4.5",
     "firebase-functions-test": "0.3.3",
     "postcss": "^8.4.5",
