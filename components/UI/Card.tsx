@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import StyleProps from '../../props/style.props'
 
-const Card: FC<StyleProps> = (props) => {
+const Card: FC<PropsWithChildren<StyleProps>> = (props) => {
   return (
     <div
       className={classNames(

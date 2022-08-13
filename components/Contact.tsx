@@ -1,12 +1,16 @@
 import classNames from 'classnames'
-import { FC } from 'react'
-import ContactProps from '../props/contact.props'
 import StyleProps from '../props/style.props'
 import ContactInput from './Contact/ContactInput'
 import ContactTextarea from './Contact/ContactTextarea'
 import DividerLine from './UI/DividerLine'
+import React from 'react'
 
-const Contact: FC<ContactProps & StyleProps> = (props) => {
+interface ContactProps {
+  email: string
+  formSpringUrl: string
+}
+
+const Contact: React.FC<ContactProps & StyleProps> = (props) => {
   return (
     <div
       className={classNames(

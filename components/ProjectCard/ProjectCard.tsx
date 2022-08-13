@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
 import ProjectProps from '../../props/project.props'
 import StyleProps from '../../props/style.props'
@@ -10,7 +10,9 @@ import VideoPlayer from '../UI/VideoPlayer'
 import TechnologyPill from './TechnologyPill'
 import DividerLine from '../UI/DividerLine'
 
-const ProjectCard: FC<ProjectProps & StyleProps> = (props) => {
+const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = (
+  props
+) => {
   return (
     <Card className={props.className}>
       <article className="flex flex-col items-center rounded p-6 text-center">

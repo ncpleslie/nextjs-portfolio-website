@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import InputProps from '../../props/input.props'
 import classes from './ContactInput.module.css'
 
-const ContactInput: FC<InputProps> = ({ id, type, name, alt, children }) => {
+const ContactInput: FC<PropsWithChildren<InputProps>> = ({ id, type, name, alt, children }) => {
   return (
     <div className={classes.container}>
       <input

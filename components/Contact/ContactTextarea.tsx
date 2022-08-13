@@ -1,8 +1,12 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import InputProps from '../../props/input.props'
 import classes from './ContactInput.module.css'
 
-const ContactTextarea: FC<InputProps> = ({ id, name, children }) => {
+const ContactTextarea: FC<PropsWithChildren<InputProps>> = ({
+  id,
+  name,
+  children,
+}) => {
   return (
     <div className={classes.container}>
       <textarea className={classes.input} id={id} name={name} placeholder=" " />

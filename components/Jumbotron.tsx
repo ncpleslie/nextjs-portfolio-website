@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import JumbotronProps from '../props/jumbotron.props'
 import ThreeDContent from './3D/ThreeDContent'
 import DividerLine from './UI/DividerLine'
 
-const Jumbotron: FC<JumbotronProps> = (props) => {
+const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
   return (
     <header className="z-10 flex h-screen w-screen flex-col items-center justify-center gap-2 p-4 pt-5 text-center sm:gap-10 sm:p-10">
       <div className="flex flex-col items-center justify-center gap-2">
