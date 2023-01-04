@@ -32,7 +32,9 @@ export default function Model({
 }: JSX.IntrinsicElements['group'] & StyleProps) {
   const ref = useRef()
 
-  const { nodes } = useGLTF('/retrowave-transformed.glb') as GLTFResult
+  const { nodes } = useGLTF(
+    '/retrowave-transformed.glb'
+  ) as unknown as GLTFResult
 
   const sunRef = useRef()
   const lightRef = useRef()
