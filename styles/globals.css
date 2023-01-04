@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url(https://fonts.googleapis.com/css2?family=Monoton&family=Roboto&family=Share+Tech+Mono&display=swap);
+
 @layer base {
   all: initial;
   * {

@@ -26,12 +26,12 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = (
             {!props.project.isVideo && (
               <ImageLoader src={props.project.imageUrl} />
             )}
-            {props.project.isVideo && (
+            {/* {props.project.isVideo && (
               <VideoPlayer
                 url={props.project.imageUrl}
                 title={props.project.title}
               />
-            )}
+            )} */}
           </a>
         </Link>
         <div className="my-4 h-32">

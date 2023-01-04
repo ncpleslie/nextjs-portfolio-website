@@ -1,7 +1,12 @@
 import { FC, PropsWithChildren } from 'react'
 import JumbotronProps from '../props/jumbotron.props'
-import ThreeDContent from './3D/ThreeDContent'
 import DividerLine from './UI/DividerLine'
+import dynamic from 'next/dynamic'
+import ThreeDLoader from './3D/ThreeDLoader'
+
+const BackgroundAnimation = dynamic(() => import('./3D/ThreeDContent'), {
+  ssr: false,
+})
 
 const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
   return (
@@ -20,7 +25,8 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
         <p className="max-w-[75ch]">{props.description}</p>
       </div>
       {props.children}
-      <ThreeDContent />
+      <ThreeDLoader />
+      <BackgroundAnimation />
     </header>
   )
 }

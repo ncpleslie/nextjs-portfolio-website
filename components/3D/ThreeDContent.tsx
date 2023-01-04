@@ -1,12 +1,8 @@
-import { Loader } from '@react-three/drei'
+import { Loader, useProgress } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import React, { Suspense } from 'react'
 import StyleProps from '../../props/style.props'
-import dynamic from 'next/dynamic'
-
-const Model = dynamic(() => import('./Retrowave'), {
-  suspense: true,
-})
+import Retrowave from './Retrowave'
 
 function Dolly() {
   // This one makes the camera move in and out
@@ -16,9 +12,17 @@ function Dolly() {
   return null
 }
 
-const ThreeDContent: React.FC<StyleProps> = ({ className }) => {
+const ThreeDContent: React.FC<StyleProps> = () => {
+  const loaded: boolean = useProgress(
+    (state: { active: boolean }) => !state.active
+  )
+
   return (
-    <div className={`absolute -z-10 h-screen w-full bg-skin-fill`}>
+    <div
+      className={`absolute -z-10 h-screen w-full ${
+        loaded ? 'bg-skin-fill' : 'bg-transparent'
+      }`}
+    >
       <Canvas
         className={`h-screen`}
         gl={{ antialias: true, alpha: true }}
@@ -28,11 +32,11 @@ const ThreeDContent: React.FC<StyleProps> = ({ className }) => {
         }}
       >
         <Suspense fallback={null}>
-          <Model />
+          <Retrowave />
         </Suspense>
         <Dolly />
       </Canvas>
-      <Loader />
+      <Loader containerStyles={{ background: 'rgba(0,0,0,0)' }} />
     </div>
   )
 }

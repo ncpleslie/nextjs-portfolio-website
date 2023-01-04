@@ -6,7 +6,11 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { EffectComposer, SelectiveBloom } from '@react-three/postprocessing'
+import {
+  EffectComposer,
+  SelectiveBloom,
+  Select,
+} from '@react-three/postprocessing'
 import StyleProps from '../../props/style.props'
 
 type GLTFResult = GLTF & {
@@ -39,8 +43,8 @@ export default function Model({
     <>
       <group ref={groupRef} {...props} dispose={null}>
         <group
-          ref={sunRef}
           name="Camera"
+          ref={sunRef}
           position={[0, 0.54, -8]}
           rotation={[1.54, 0, Math.PI]}
         >
@@ -74,9 +78,11 @@ export default function Model({
       {lightRef.current && (
         <EffectComposer>
           <SelectiveBloom
+            mipmapBlur
             lights={[lightRef]}
             selection={[sunRef, mountainsRef]}
             intensity={7}
+            radius={0.75}
             selectionLayer={1}
             luminanceThreshold={0}
             luminanceSmoothing={1}
