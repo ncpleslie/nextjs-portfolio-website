@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "predeploy": "npm run clean && next build"
   },
   "dependencies": {
@@ -30,12 +31,15 @@
     "three-stdlib": "^2.21.5"
   },
   "devDependencies": {
-    "@types/three": "^0.148.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.1",
+    "@types/three": "^0.148.0",
     "autoprefixer": "10.4.5",
+    "eslint": "^8.31.0",
+    "eslint-config-next": "^13.1.1",
     "firebase-functions-test": "0.3.3",
     "postcss": "^8.4.5",
+    "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.1.5",
     "rimraf": "3.0.2",
     "shelljs": "0.8.5",

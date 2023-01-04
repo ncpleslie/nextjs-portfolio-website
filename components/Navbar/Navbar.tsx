@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
 import NavbarProps from '../../props/navbar.props'
 import Button from '../UI/Button'
@@ -14,8 +14,10 @@ const Navbar: FC<NavbarProps> = (props) => {
   const buttonsRef = useRef<HTMLElement[]>([])
   let navbarYLocation = 0
   const triggerOffset = 80
-  const boxes = useMemo(() => [], [buttonsRef])
-  var ease = Power1.easeInOut
+  const [boxes, setBoxes] = useState<
+    { x: number; y: number; button: HTMLElement }[]
+  >([])
+  const ease = Power1.easeInOut
 
   const hideNav = () => {
     setIsScrolledTo(window.scrollY > navbarYLocation)
@@ -53,14 +55,17 @@ const Navbar: FC<NavbarProps> = (props) => {
         { duration: 0.2, x: 0, y: 0, ease }
       )
     })
-  }, [isScrolledTo])
+  }, [isScrolledTo, ease, boxes])
 
   useEffect(() => {
     buttonsRef?.current?.forEach((button) => {
-      boxes.push({
-        x: button?.offsetLeft,
-        y: button?.offsetTop,
-        button,
+      setBoxes((prev) => {
+        prev.push({
+          x: button?.offsetLeft,
+          y: button?.offsetTop,
+          button,
+        })
+        return prev
       })
     })
   }, [buttonsRef])

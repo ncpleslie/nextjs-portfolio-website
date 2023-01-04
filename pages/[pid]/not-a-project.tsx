@@ -9,7 +9,7 @@ function NotAPost() {
       <div className="container">
         <main>
           <Navbar name={'Nick Leslie'} links={[]} />
-          <h1 className="title">This isn't a project</h1>
+          <h1 className="title">This project is in another castle</h1>
         </main>
 
         <Footer />
