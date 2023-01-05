@@ -2,13 +2,22 @@ import classNames from 'classnames'
 import { FC } from 'react'
 import StyleProps from '../../props/style.props'
 
-const DividerLine: FC<{ fancy?: boolean } & StyleProps> = ({
+interface DividerLineProps {
+  fancy?: boolean
+  full?: boolean
+}
+
+const DividerLine: FC<DividerLineProps & StyleProps> = ({
   fancy,
+  full,
   className,
 }) => {
   return (
     <div
-      className={classNames(`line w-[60%] ${className}`, { fancy: fancy })}
+      className={classNames(
+        `line ${full ? 'w-full' : 'w-[60%]'} ${className}`,
+        { fancy: fancy }
+      )}
     />
   )
 }

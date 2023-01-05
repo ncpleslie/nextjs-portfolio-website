@@ -6,11 +6,7 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import {
-  EffectComposer,
-  SelectiveBloom,
-  Select,
-} from '@react-three/postprocessing'
+import { EffectComposer, SelectiveBloom } from '@react-three/postprocessing'
 import StyleProps from '../../props/style.props'
 
 type GLTFResult = GLTF & {
@@ -30,8 +26,6 @@ export default function Model({
   className,
   ...props
 }: JSX.IntrinsicElements['group'] & StyleProps) {
-  const ref = useRef()
-
   const { nodes } = useGLTF(
     '/retrowave-transformed.glb'
   ) as unknown as GLTFResult
@@ -46,14 +40,14 @@ export default function Model({
       <group ref={groupRef} {...props} dispose={null}>
         <group
           name="Camera"
-          ref={sunRef}
           position={[0, 0.54, -8]}
           rotation={[1.54, 0, Math.PI]}
         >
           <mesh
+            ref={sunRef}
             geometry={nodes.Sphere.geometry}
             material-color="rgb(255, 138, 0)"
-            position={[-0.02, -322.62, 9.55]}
+            position={[0, -150, 9.55]}
             rotation={[1.54, 0, -Math.PI]}
             scale={[60, 60, 60]}
           />
@@ -61,11 +55,13 @@ export default function Model({
         <group scale={8}>
           <mesh
             geometry={nodes.Plane_1.geometry}
+            position={[0, -0.05, -35]}
             material-color="rgb(23, 20, 29)"
           />
           <mesh
             ref={mountainsRef}
             geometry={nodes.Plane_2.geometry}
+            position={[0, -0.05, -35]}
             material-color="rgb(229, 46, 113)"
           />
         </group>
@@ -77,13 +73,13 @@ export default function Model({
         ref={lightRef}
       />
 
-      {lightRef.current && (
+      {lightRef && (
         <EffectComposer>
           <SelectiveBloom
             mipmapBlur
             lights={[lightRef]}
             selection={[sunRef, mountainsRef]}
-            intensity={7}
+            intensity={15}
             radius={0.75}
             selectionLayer={1}
             luminanceThreshold={0}

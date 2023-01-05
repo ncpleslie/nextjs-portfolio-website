@@ -7,7 +7,7 @@ import Retrowave from './Retrowave'
 function Dolly() {
   // This one makes the camera move in and out
   useFrame(({ clock, camera }) => {
-    camera.position.z = clock.getElapsedTime() * 0.2
+    camera.position.z = clock.getElapsedTime() * 0.1 - 150
   })
   return null
 }
@@ -25,10 +25,11 @@ const ThreeDContent: React.FC<StyleProps> = () => {
     >
       <Canvas
         className={`h-screen`}
-        gl={{ antialias: true, alpha: true }}
-        camera={{ position: [0, 0.15, 0.5], fov: 40 }}
-        onCreated={({ gl, camera }) => {
+        gl={{ antialias: true, alpha: false }}
+        camera={{ position: [0, 0.05, 0.5], fov: 25, far: 5000, near: 0.1 }}
+        onCreated={({ camera }) => {
           camera.lookAt(0, 0, 180)
+          camera.position.z = -10
         }}
       >
         <Suspense fallback={null}>

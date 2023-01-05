@@ -13,7 +13,7 @@ const Navbar: FC<NavbarProps> = (props) => {
   const navbarRef = useRef<HTMLElement>(null)
   const buttonsRef = useRef<HTMLElement[]>([])
   let navbarYLocation = 0
-  const triggerOffset = 80
+  const triggerOffset = 60
   const [boxes, setBoxes] = useState<
     { x: number; y: number; button: HTMLElement }[]
   >([])
@@ -111,7 +111,7 @@ const Navbar: FC<NavbarProps> = (props) => {
       </Link>
       <div className={isScrolledTo ? classes.navbarTopProjectBtn : ''}>
         <Button
-          className={isScrolledTo ? 'w-52 py-2' : ''}
+          className={isScrolledTo ? 'w-52 py-2' : 'w-64'}
           url="#projects"
           title="See Project"
         >

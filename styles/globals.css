@@ -1,8 +1,8 @@
+@import url(https://fonts.googleapis.com/css2?family=Monoton&family=Roboto&family=Share+Tech+Mono&display=swap);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url(https://fonts.googleapis.com/css2?family=Monoton&family=Roboto&family=Share+Tech+Mono&display=swap);
 
 @layer base {
   all: initial;
@@ -34,6 +34,13 @@
     width: 100%;
   }
 
+  .font-outline {
+    -webkit-text-stroke: 1px black;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
+
   .btn {
     @apply flex w-full flex-col items-center justify-center p-2 text-center;
     @apply border-2 border-skin-button-base bg-skin-button-base;
@@ -50,7 +57,7 @@
   }
 
   h1 {
-    font-size: 6rem;
+    @apply text-7xl sm:text-9xl;
     font-family: 'Monoton', monospace;
   }
 
