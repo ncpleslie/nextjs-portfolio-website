@@ -1,14 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
-import NavbarProps from '../../props/navbar.props'
 import Button from '../UI/Button'
 import classes from './Navbar.module.css'
 import { gsap, Power1 } from 'gsap'
-import Hamburger from './Hamburger'
+import NavMenu from './NavMenu'
 import DividerLine from '../UI/DividerLine'
 import Link from 'next/link'
+import NavbarLink from '../../models/link.model'
 
-const Navbar: FC<NavbarProps> = (props) => {
+export interface NavbarProps {
+  links: NavbarLink[]
+  name: string
+}
+
+const Navbar: FC<NavbarProps> = ({ links, name }) => {
   const [isScrolledTo, setIsScrolledTo] = useState(false)
   const navbarRef = useRef<HTMLElement>(null)
   const buttonsRef = useRef<HTMLElement[]>([])
@@ -95,7 +100,7 @@ const Navbar: FC<NavbarProps> = (props) => {
               : classes.navbarJumbotronHeader
           }
         >
-          {props.name}
+          {name}
         </a>
       </Link>
       <Link href={'/'}>
@@ -118,16 +123,17 @@ const Navbar: FC<NavbarProps> = (props) => {
           See Projects
         </Button>
       </div>
-      <Hamburger
+      <NavMenu
         className={isScrolledTo ? classes.navbarTopHamburger : 'hidden'}
+        links={links}
       />
       <div
         className={
           isScrolledTo ? classes.navbarTopBtnBar : classes.navbarJumbotronBtnBar
         }
       >
-        {props.links &&
-          props.links.map((link) => (
+        {links &&
+          links.map((link) => (
             <div
               ref={(el) => buttonsRef.current.push(el)}
               className="h-full"

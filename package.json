@@ -13,6 +13,7 @@
     "predeploy": "npm run clean && next build"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.7",
     "@react-three/drei": "^9.50.4",
     "@react-three/fiber": "^8.10.0",
     "@react-three/postprocessing": "^2.1.2",

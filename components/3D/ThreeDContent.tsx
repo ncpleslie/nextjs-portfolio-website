@@ -5,9 +5,16 @@ import StyleProps from '../../props/style.props'
 import Retrowave from './Retrowave'
 
 function Dolly() {
+  const maxZ = 100
+  const zOffset = 150
   // This one makes the camera move in and out
   useFrame(({ clock, camera }) => {
-    camera.position.z = clock.getElapsedTime() * 0.1 - 150
+    if (camera.position.z === maxZ) {
+      camera.position.z = clock.getElapsedTime() / 0.1 - zOffset
+
+      return
+    }
+    camera.position.z = clock.getElapsedTime() * 0.1 - zOffset
   })
   return null
 }

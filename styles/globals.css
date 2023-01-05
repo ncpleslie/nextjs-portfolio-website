@@ -27,11 +27,12 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
   }
 
   body {
     width: 100%;
+    overflow: overlay;
   }
 
   .font-outline {
@@ -68,6 +69,7 @@
 
   h3 {
     font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
   }
 
   p {
@@ -131,6 +133,7 @@
 
   ::-webkit-scrollbar-track {
     background: rgb(var(--color-fill));
+    display: none;
   }
 
   ::-webkit-scrollbar-thumb {

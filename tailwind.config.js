@@ -21,6 +21,10 @@ module.exports = {
       boxShadow: {
         full: '0 8px 48px 8px rgba(0, 0, 0, 0.87)'
       },
+      colors: {
+        accent1: withOpacity('--color-accent1'),
+        accent2: withOpacity('--color-accent2'),
+      },
       textColor: {
         skin: {
           base: withOpacity('--color-text-base'),
@@ -43,6 +47,8 @@ module.exports = {
           'button-base': withOpacity('--color-button-accent'),
           'button-base-hover': withOpacity('--color-button-accent-hover'),
           'button-disabled': withOpacity('--color-button-disabled'),
+          accent1: withOpacity('--color-accent1'),
+          accent2: withOpacity('--color-accent2'),
         },
       }
     },

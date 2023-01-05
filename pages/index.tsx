@@ -1,7 +1,6 @@
 import Footer from '../components/Footer'
 import ProjectService from '../services/project.service'
 import Project from '../models/project.model'
-import ProjectsProps from '../props/projects.props'
 import HeadExtended from '../components/UI/HeadExtended'
 import ServiceProvider from '../utils/service-provider'
 import { ServiceKey } from '../enums/service-key.enum'
