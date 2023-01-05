@@ -2,12 +2,12 @@ import { useRouter } from 'next/router'
 import Error from 'next/error'
 import Footer from '../../components/Footer'
 import ProjectService from '../../services/project.service'
-import ProjectProps from '../../props/project.props'
 import HeadExtended from '../../components/UI/HeadExtended'
 import ServiceProvider from '../../utils/service-provider'
 import { ServiceKey } from '../../enums/service-key.enum'
 import Navbar from '../../components/Navbar/Navbar'
 import EmbedWebsite from '../../components/EmbedWebsite'
+import { ProjectProps } from '../../components/ProjectCard/ProjectCard'
 
 export async function getStaticPaths() {
   // by returning an empty list, we are forcing each page to be rendered on request.
