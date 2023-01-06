@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
 import StyleProps from '../../props/style.props'
 import ImageLoader from '../UI/ImageLoader'
@@ -18,25 +18,61 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
   project,
   className,
 }) => {
+  const [projectUrl, setProjectUrl] = useState<string>('')
+  const [newTab, setNewTab] = useState(true)
+
+  useEffect(() => {
+    if (project.projectUrl) {
+      setProjectUrl(`/?project=${project.id}`)
+      setNewTab(false)
+    } else if (project.githubUrl) {
+      setProjectUrl(project.githubUrl)
+      setNewTab(true)
+    } else {
+      setProjectUrl('')
+      setNewTab(true)
+    }
+
+    return () => {
+      setProjectUrl('')
+      setNewTab(true)
+    }
+  }, [project])
+
   return (
     <Card className={className}>
       <article className="flex flex-col items-center gap-2 rounded p-6 text-center">
-        <Link href={`/?project=${project.id}`} scroll={false}>
-          <a>
-            <h3 className="fancy h-10">{project.title}</h3>
-          </a>
-        </Link>
+        {projectUrl ? (
+          <>
+            <Link href={projectUrl} scroll={false}>
+              <a
+                target={newTab ? '_blank' : undefined}
+                rel={newTab ? 'noopener noreferrer' : undefined}
+              >
+                <h3 className="fancy h-10">{project.title}</h3>
+              </a>
+            </Link>
 
-        {project.isVideo ? (
-          <VideoPlayer url={project.imageUrl} title={project.title} />
+            {project.isVideo ? (
+              <VideoPlayer url={project.imageUrl} title={project.title} />
+            ) : (
+              <Link href={projectUrl} scroll={false}>
+                <a
+                  target={newTab ? '_blank' : undefined}
+                  rel={newTab ? 'noopener noreferrer' : undefined}
+                >
+                  <ImageLoader src={project.imageUrl} />
+                </a>
+              </Link>
+            )}
+          </>
         ) : (
-          <Link href={`/?project=${project.id}`} scroll={false}>
-            <a>
-              <ImageLoader src={project.imageUrl} />
-            </a>
-          </Link>
+          <>
+            <h3 className="fancy h-10">{project.title}</h3>
+            <ImageLoader src={project.imageUrl} />
+          </>
         )}
-        <div className="my-4 h-32">
+        <div className="my-4 h-24">
           <p>{project.description}</p>
         </div>
         <DividerLine />

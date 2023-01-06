@@ -122,3 +122,6 @@ temp/
 # End of https://www.gitignore.io/api/node,firebase
 
 firebase_config.json
+/test-results/
+/playwright-report/
+/playwright/.cache/

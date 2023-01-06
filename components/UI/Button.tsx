@@ -15,6 +15,7 @@ const Button: FC<ButtonProps & StyleProps> = ({
 }) => {
   const [btnTitle, setBtnTitle] = useState<string>()
   const [icon, setIcon] = useState<string>()
+  const [newTab, setNewTab] = useState(true)
 
   useEffect(() => {
     let titleValue = ''
@@ -23,6 +24,7 @@ const Button: FC<ButtonProps & StyleProps> = ({
       case LinkType.Contact:
         titleValue = 'contact me'
         iconPath = '/icons/email.svg'
+        setNewTab(false)
         break
       case LinkType.Github:
         titleValue = 'GitHub'
@@ -43,6 +45,7 @@ const Button: FC<ButtonProps & StyleProps> = ({
       default:
         titleValue = ''
         iconPath = ''
+        setNewTab(false)
         break
     }
 
@@ -55,6 +58,8 @@ const Button: FC<ButtonProps & StyleProps> = ({
       <a
         className={classNames(`btn ${className}`, { disabled: disabled })}
         title={btnTitle && `Navigate to ${btnTitle}`}
+        target={newTab ? '_blank' : undefined}
+        rel={newTab ? 'noopener noreferrer' : undefined}
       >
         {type && <img className="w-8" src={icon} />}
         <p>{children}</p>

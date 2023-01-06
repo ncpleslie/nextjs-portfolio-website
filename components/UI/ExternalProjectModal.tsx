@@ -57,7 +57,7 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="m-2 h-full w-full transform overflow-hidden rounded-2xl border-2 border-accent2 bg-skin-fill  text-left align-middle shadow-xl transition-all md:m-8 md:p-6">
+                <Dialog.Panel className="m-2 flex h-full w-full transform flex-col overflow-hidden rounded-2xl border-2 border-accent2 bg-skin-fill p-2 text-left align-middle shadow-xl transition-all md:m-8 md:p-6">
                   <div className="flex flex-row items-center justify-between p-2 md:p-0">
                     <Dialog.Title as="h2" className="fancy mb-4">
                       {project.title}
@@ -70,22 +70,22 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
                       <div className="h-0.5 w-8 rotate-45 bg-accent1"></div>
                     </button>
                   </div>
-                  <div className="h-full w-full overflow-y-auto p-1 md:p-0">
+                  <div className="flex h-full w-full flex-col items-center justify-start overflow-y-auto p-1 md:p-0">
                     <iframe
-                      className="h-4/6 w-full rounded-2xl border-2 border-accent1 bg-white"
+                      className="h-5/6 w-full bg-white md:rounded-2xl md:border-2 md:border-accent1"
                       src={project.projectUrl}
                     ></iframe>
                     <div className="my-4">
                       <p>{project.description}</p>
                     </div>
                     <DividerLine />
-                    <div className="flex flex-row flex-wrap justify-center leading-[2] sm:p-4">
+                    <div className="flex flex-row flex-wrap justify-center sm:p-4">
                       {project.technologies.map((tech: string) => (
                         <TechnologyPill key={tech} tech={tech} />
                       ))}
                     </div>
                     <DividerLine />
-                    <div className="mt-4 flex flex-row items-center justify-center gap-8">
+                    <div className="mt-4 flex flex-row flex-wrap items-center justify-center gap-8">
                       <Button
                         className="inverted w-16"
                         disabled={!Boolean(project.githubUrl)}
@@ -100,17 +100,6 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
                         type={LinkType.Project}
                         title="see this project"
                       />
-
-                      <button
-                        type="button"
-                        className="btn flex w-16 items-center justify-center"
-                        onClick={closeModal}
-                      >
-                        <div className="mt-4 h-4 w-8 -space-y-[0.1rem]">
-                          <div className="h-0.5 w-8 -rotate-45 bg-white"></div>
-                          <div className="h-0.5 w-8 rotate-45 bg-white"></div>
-                        </div>
-                      </button>
                     </div>
                   </div>
                 </Dialog.Panel>

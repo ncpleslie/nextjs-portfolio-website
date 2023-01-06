@@ -18,7 +18,9 @@ const NavMenu: FC<NavMenuProps & StyleProps> = ({ className, links }) => {
           <>
             <Menu.Button
               as="button"
-              className={`mr-2 ${open ? '-space-y-[0.1rem]' : 'space-y-2'}`}
+              className={`mr-2 ${
+                open ? '-space-y-[0.1rem] pt-2' : 'space-y-2'
+              }`}
             >
               <div
                 className={`h-0.5 w-8 bg-gray-600 ${
