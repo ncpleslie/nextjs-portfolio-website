@@ -35,7 +35,7 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
           <p className="max-w-[75ch]">{props.description}</p>
         </div>
         <ThreeDLoader />
-        {/* <BackgroundAnimation /> */}
+        <BackgroundAnimation />
       </header>
       <DividerLine fancy full />
     </>
