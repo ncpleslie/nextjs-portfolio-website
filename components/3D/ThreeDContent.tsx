@@ -5,12 +5,12 @@ import StyleProps from '../../props/style.props'
 import Retrowave from './Retrowave'
 
 function Dolly() {
-  const maxZ = 100
+  const maxZ = -100
   const zOffset = 150
   // This one makes the camera move in and out
   useFrame(({ clock, camera }) => {
-    if (camera.position.z === maxZ) {
-      camera.position.z = clock.getElapsedTime() / 0.1 - zOffset
+    if (camera.position.z >= maxZ) {
+      camera.position.z = maxZ - (clock.getElapsedTime() * 0.1 - zOffset)
 
       return
     }
@@ -20,6 +20,8 @@ function Dolly() {
 }
 
 const ThreeDContent: React.FC<StyleProps> = () => {
+  const startZ = -150
+
   const loaded: boolean = useProgress(
     (state: { active: boolean }) => !state.active
   )
@@ -36,6 +38,7 @@ const ThreeDContent: React.FC<StyleProps> = () => {
         camera={{ position: [0, 0.05, 0.5], fov: 25, far: 5000, near: 0.1 }}
         onCreated={({ camera }) => {
           camera.lookAt(0, 0, 180)
+          camera.position.z = startZ
         }}
       >
         <Suspense fallback={null}>

@@ -10,8 +10,10 @@ import ErrorProps from '../props/error.props'
 import Contact from '../components/Contact'
 import ContactProps from '../props/contact.props'
 import Projects from '../components/Projects'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar/Navbar'
+import ExternalProjectModal from '../components/UI/ExternalProjectModal'
+import { useRouter } from 'next/router'
 
 export async function getStaticProps() {
   const projectService = ServiceProvider.get<ProjectService>(ServiceKey.Project)
@@ -45,6 +47,21 @@ const Home: FC<
     contact: ContactProps
   } & ErrorProps
 > = ({ projects, profile, contact, error }) => {
+  const router = useRouter()
+  const [modalProject, setModalProject] = useState<Project>()
+
+  useEffect(() => {
+    const projectQuery = router.query.project
+    if (projectQuery) {
+      const project = projects.find((project) => project.id === projectQuery)
+      setModalProject(project)
+
+      return
+    }
+
+    setModalProject(undefined)
+  }, [router.query])
+
   return (
     <>
       <HeadExtended />
@@ -61,6 +78,14 @@ const Home: FC<
         <Contact email={contact.email} formSpringUrl={contact.formSpringUrl} />
       </main>
       <Footer />
+      {modalProject && (
+        <ExternalProjectModal
+          project={modalProject}
+          onClose={() => {
+            router.push('/', undefined, { scroll: false })
+          }}
+        />
+      )}
     </>
   )
 }

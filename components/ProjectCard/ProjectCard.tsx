@@ -14,45 +14,34 @@ export interface ProjectProps {
   project: Project
 }
 
-const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = (
-  props
-) => {
+const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
+  project,
+  className,
+}) => {
   return (
-    <Card className={props.className}>
+    <Card className={className}>
       <article className="flex flex-col items-center gap-2 rounded p-6 text-center">
-        <Link
-          href="/[pid]"
-          as={`/${props.project.id}`}
-          key={`${props.project.id}`}
-        >
+        <Link href={`/?project=${project.id}`} scroll={false}>
           <a>
-            <h3 className="fancy h-10">{props.project.title}</h3>
+            <h3 className="fancy h-10">{project.title}</h3>
           </a>
         </Link>
 
-        <Link
-          href="/[pid]"
-          as={`/${props.project.id}`}
-          key={`${props.project.id}`}
-        >
-          <a>
-            {!props.project.isVideo && (
-              <ImageLoader src={props.project.imageUrl} />
-            )}
-            {props.project.isVideo && (
-              <VideoPlayer
-                url={props.project.imageUrl}
-                title={props.project.title}
-              />
-            )}
-          </a>
-        </Link>
+        {project.isVideo ? (
+          <VideoPlayer url={project.imageUrl} title={project.title} />
+        ) : (
+          <Link href={`/?project=${project.id}`} scroll={false}>
+            <a>
+              <ImageLoader src={project.imageUrl} />
+            </a>
+          </Link>
+        )}
         <div className="my-4 h-32">
-          <p>{props.project.description}</p>
+          <p>{project.description}</p>
         </div>
         <DividerLine />
         <div className="flex flex-row flex-wrap justify-center leading-[2] sm:p-4">
-          {props.project.technologies.map((tech: string) => (
+          {project.technologies.map((tech: string) => (
             <TechnologyPill key={tech} tech={tech} />
           ))}
         </div>
@@ -60,15 +49,15 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = (
         <div className="mt-4 flex flex-row gap-8">
           <Button
             className="inverted"
-            disabled={!Boolean(props.project.githubUrl)}
-            url={props.project.githubUrl}
+            disabled={!Boolean(project.githubUrl)}
+            url={project.githubUrl}
             type={LinkType.Github}
             title="Github"
           />
           <Button
             className="inverted"
-            disabled={!Boolean(props.project.projectUrl)}
-            url={`/${props.project.id}`}
+            disabled={!Boolean(project.projectUrl)}
+            url={project.projectUrl}
             type={LinkType.Project}
             title="see this project"
           />
