@@ -5,7 +5,7 @@ import ContactTextarea from './Contact/ContactTextarea'
 import DividerLine from './UI/DividerLine'
 import React from 'react'
 
-interface ContactProps {
+export interface ContactProps {
   email: string
   formSpringUrl: string
 }
