@@ -30,6 +30,7 @@ const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
         alt={alt}
         height={height ? height : undefined}
         width={width ? width : undefined}
+        loading="lazy"
       />
       {isLoading && <div>Loading...</div>}
     </div>

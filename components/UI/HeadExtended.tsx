@@ -23,6 +23,11 @@ const HeadExtended: React.FC<HeadExtendedProps> = ({
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <meta property="og:image" content="/metadata_thumbnail.jpg" />
+      <meta name="twitter:title" content="European Travel Destinations " />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content="/metadata_thumbnail.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   )
 }
