@@ -163,7 +163,7 @@ const Navbar: FC<NavbarProps> = ({ links, name }) => {
         </div>
       </div>
       {isScrolledTo && (
-        <DividerLine className="absolute bottom-0 w-screen" fancy />
+        <DividerLine className="absolute bottom-0 w-screen" fancy full />
       )}
     </nav>
   )

@@ -1,5 +1,8 @@
 import { FC } from 'react'
-import EmbedWebsiteProps from '../props/embed-website.props'
+
+export interface EmbedWebsiteProps {
+  url: string
+}
 
 const EmbedWebsite: FC<EmbedWebsiteProps> = (props) => {
   return (

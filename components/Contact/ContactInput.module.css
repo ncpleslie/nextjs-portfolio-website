@@ -3,11 +3,11 @@
 }
 
 .input {
-  @apply mx-0 my-4 w-full rounded border-0 p-4;
+  @apply mx-0 my-4 w-full rounded border-0 bg-skin-fill-dark-accent p-4 text-white;
 }
 
 .input:focus {
-  @apply shadow-lg;
+  @apply shadow-lg ring-accent1;
 }
 
 .input::placeholder {
@@ -15,7 +15,7 @@
 }
 
 .label {
-  @apply absolute left-0 px-4 py-8 transition-all duration-300;
+  @apply absolute left-0 px-4 py-8 text-skin-secondary transition-all duration-300;
 }
 
 .input:focus-within + .label,

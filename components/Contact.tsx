@@ -28,7 +28,7 @@ const Contact: React.FC<ContactProps & StyleProps> = (props) => {
       <DividerLine className="my-6" />
 
       <form
-        className="flex w-[60%] flex-col"
+        className="flex w-full flex-col px-8 md:w-[60%] md:px-0"
         action={props.formSpringUrl}
         method="POST"
       >

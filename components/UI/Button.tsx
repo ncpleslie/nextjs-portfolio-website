@@ -1,11 +1,17 @@
 import classNames from 'classnames'
 import Link from 'next/link'
-import { FC, forwardRef, useEffect, useState } from 'react'
+import { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
-import ButtonProps from '../../props/button.props'
 import StyleProps from '../../props/style.props'
 
-const Button: FC<ButtonProps & StyleProps> = ({
+export interface ButtonProps {
+  disabled?: boolean
+  type?: LinkType
+  url: string
+  title: string
+}
+
+const Button: FC<PropsWithChildren<ButtonProps & StyleProps>> = ({
   type,
   title,
   disabled,

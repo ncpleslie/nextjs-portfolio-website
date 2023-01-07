@@ -12,6 +12,7 @@
 
   :root {
     --color-text-base: 255, 255, 255;
+    --color-text-secondary: 156, 163, 175;
     --color-accent1: 255, 138, 0;
     --color-accent2: 229, 46, 113;
     --color-fill: 23, 20, 29;

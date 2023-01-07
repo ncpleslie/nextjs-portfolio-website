@@ -28,6 +28,7 @@ module.exports = {
       textColor: {
         skin: {
           base: withOpacity('--color-text-base'),
+          secondary: withOpacity('--color-text-secondary'),
           accent1: withOpacity('--color-accent1'),
           accent2: withOpacity('--color-accent2'),
         },
@@ -40,6 +41,7 @@ module.exports = {
           'button-base': withOpacity('--color-button-base'),
           'button-base-hover': withOpacity('--color-button-base-hover'),
           'button-disabled': withOpacity('--color-button-disabled'),
+          'fill-dark-accent': withOpacity('--color-dark-accent')
         },
       },
       borderColor: {
