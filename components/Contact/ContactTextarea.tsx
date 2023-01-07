@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
-import InputProps from '../../props/input.props'
+import { InputProps } from './ContactInput'
 import classes from './ContactInput.module.css'
 
 const ContactTextarea: FC<PropsWithChildren<InputProps>> = ({
