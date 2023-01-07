@@ -1,4 +1,5 @@
 export enum ServiceKey {
-    Project,
-    Profile
+  Project = 'PROJECT',
+  Profile = 'PROFILE',
+  Metadata = 'METADATA',
 }

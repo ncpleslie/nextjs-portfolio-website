@@ -6,7 +6,7 @@ const Card: FC<PropsWithChildren<StyleProps>> = (props) => {
   return (
     <div
       className={classNames(
-        'rounded border-black bg-skin-fill shadow-lg shadow-black transition-all hover:scale-105',
+        'rounded border-black bg-skin-fill shadow-lg shadow-black transition-all md:hover:scale-105',
         props.className
       )}
     >

@@ -7,6 +7,7 @@ import NavMenu from './NavMenu'
 import DividerLine from '../UI/DividerLine'
 import Link from 'next/link'
 import NavbarLink from '../../models/link.model'
+import useIsMobile from '../../hooks/use_is_mobile'
 
 export interface NavbarProps {
   links: NavbarLink[]
@@ -18,17 +19,22 @@ const Navbar: FC<NavbarProps> = ({ links, name }) => {
   const navbarRef = useRef<HTMLElement>(null)
   const buttonsRef = useRef<HTMLElement[]>([])
   let navbarYLocation = 0
-  const triggerOffset = 60
+  const triggerOffset = 50
   const [boxes, setBoxes] = useState<
     { x: number; y: number; button: HTMLElement }[]
   >([])
   const ease = Power1.easeInOut
+  const isMobile = useIsMobile()
 
   const hideNav = () => {
     setIsScrolledTo(window.scrollY > navbarYLocation)
   }
 
   useEffect(() => {
+    if (isMobile) {
+      return
+    }
+
     if (isScrolledTo) {
       // Animation for scrolling down.
       boxes.forEach((box) => {

@@ -2,7 +2,20 @@ import classNames from 'classnames'
 import { FC, useState } from 'react'
 import StyleProps from '../../props/style.props'
 
-const ImageLoader: FC<{ src: string } & StyleProps> = (props) => {
+interface ImageLoaderProps {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
+
+const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
+  className,
+  src,
+  alt,
+  width,
+  height,
+}) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const handleOnLoad = () => {
@@ -10,8 +23,14 @@ const ImageLoader: FC<{ src: string } & StyleProps> = (props) => {
   }
 
   return (
-    <div className={classNames(`aspect-video w-full ${props.className}`)}>
-      <img src={props.src} onLoad={handleOnLoad} />
+    <div className={classNames(`aspect-video w-full ${className}`)}>
+      <img
+        src={src}
+        onLoad={handleOnLoad}
+        alt={alt}
+        height={height ? height : undefined}
+        width={width ? width : undefined}
+      />
       {isLoading && <div>Loading...</div>}
     </div>
   )

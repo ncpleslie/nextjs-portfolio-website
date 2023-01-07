@@ -54,7 +54,7 @@ const Contact: React.FC<ContactProps & StyleProps> = (props) => {
           Your Message
         </ContactTextarea>
 
-        <button className="btn" type="submit">
+        <button className="btn text-gray-400" type="submit">
           Submit
         </button>
       </form>

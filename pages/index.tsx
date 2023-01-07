@@ -11,13 +11,24 @@ import Contact from '../components/Contact'
 import ContactProps from '../props/contact.props'
 import Projects from '../components/Projects'
 import { FC, useEffect, useState } from 'react'
-import Navbar from '../components/Navbar/Navbar'
 import ExternalProjectModal from '../components/UI/ExternalProjectModal'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
+import MetadataService from '../services/metadata.service'
+import HeadMetadata from '../models/head-metadata.model'
+
+const Navbar = dynamic(() => import('../components/Navbar/Navbar'), {
+  ssr: false,
+})
+
+const revalidationTimeInSecs = 300
 
 export async function getStaticProps() {
   const projectService = ServiceProvider.get<ProjectService>(ServiceKey.Project)
   const profileService = ServiceProvider.get<ProfileService>(ServiceKey.Profile)
+  const metadataService = ServiceProvider.get<MetadataService>(
+    ServiceKey.Metadata
+  )
 
   try {
     const projects = (await projectService.getProjects()).map((p: Project) =>
@@ -25,13 +36,16 @@ export async function getStaticProps() {
     )
     const profile = (await profileService.getUserInformation()).toJSON()
     const contact = (await profileService.getContactInformation()).toJSON()
+    const headMetadata = (await metadataService.getHeadMetadata()).toJSON()
 
     return {
       props: {
         projects,
         profile,
         contact,
+        headMetadata,
       },
+      revalidate: revalidationTimeInSecs,
     }
   } catch (error) {
     return {
@@ -45,8 +59,9 @@ const Home: FC<
     projects: Project[]
     profile: JumbotronProps
     contact: ContactProps
+    headMetadata: HeadMetadata
   } & ErrorProps
-> = ({ projects, profile, contact, error }) => {
+> = ({ projects, profile, contact, headMetadata, error }) => {
   const router = useRouter()
   const [modalProject, setModalProject] = useState<Project>()
 
@@ -64,7 +79,11 @@ const Home: FC<
 
   return (
     <>
-      <HeadExtended />
+      <HeadExtended
+        baseUrl={headMetadata.baseUrl}
+        description={headMetadata.description}
+        title={headMetadata.title}
+      />
       <Jumbotron
         name={profile.name}
         subheading={profile.subheading}

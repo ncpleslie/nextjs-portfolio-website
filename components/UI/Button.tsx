@@ -61,7 +61,15 @@ const Button: FC<ButtonProps & StyleProps> = ({
         target={newTab ? '_blank' : undefined}
         rel={newTab ? 'noopener noreferrer' : undefined}
       >
-        {type && <img className="w-8" src={icon} />}
+        {type && (
+          <img
+            className="w-8"
+            height="32"
+            width="32"
+            src={icon}
+            alt={`Icon of ${btnTitle}`}
+          />
+        )}
         <p>{children}</p>
       </a>
     </Link>

@@ -22,6 +22,7 @@
     --color-button-accent: 255, 138, 0;
     --color-button-accent-hover: 229, 46, 113;
     --color-button-disabled: 51, 51, 61;
+    --color-dark-accent: 40, 36, 47;
   }
 
   html {

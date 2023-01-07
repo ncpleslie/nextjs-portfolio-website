@@ -61,7 +61,12 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
                   target={newTab ? '_blank' : undefined}
                   rel={newTab ? 'noopener noreferrer' : undefined}
                 >
-                  <ImageLoader src={project.imageUrl} />
+                  <ImageLoader
+                    src={project.imageUrl}
+                    alt={`Image of ${project.title}`}
+                    height={243}
+                    width={432}
+                  />
                 </a>
               </Link>
             )}
@@ -69,10 +74,15 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
         ) : (
           <>
             <h3 className="fancy h-10">{project.title}</h3>
-            <ImageLoader src={project.imageUrl} />
+            <ImageLoader
+              src={project.imageUrl}
+              alt={`Image of ${project.title}`}
+              height={243}
+              width={432}
+            />
           </>
         )}
-        <div className="my-4 h-24">
+        <div className="my-4 h-36">
           <p>{project.description}</p>
         </div>
         <DividerLine />

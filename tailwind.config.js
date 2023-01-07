@@ -49,6 +49,7 @@ module.exports = {
           'button-disabled': withOpacity('--color-button-disabled'),
           accent1: withOpacity('--color-accent1'),
           accent2: withOpacity('--color-accent2'),
+          'dark-accent': withOpacity('--color-dark-accent')
         },
       }
     },
