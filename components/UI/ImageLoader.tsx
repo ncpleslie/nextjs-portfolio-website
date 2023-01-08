@@ -23,7 +23,7 @@ const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
   }
 
   return (
-    <div className={classNames(`aspect-video w-full ${className}`)}>
+    <div className={classNames(`relative aspect-video w-full ${className}`)}>
       <img
         src={src}
         onLoad={handleOnLoad}
@@ -32,7 +32,7 @@ const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
         width={width ? width : undefined}
         loading="lazy"
       />
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <div className="absolute top-0 z-10">Loading...</div>}
     </div>
   )
 }

@@ -45,7 +45,7 @@ const ThreeDContent: React.FC<StyleProps> = () => {
         </Suspense>
         <Dolly />
       </Canvas>
-      <Loader containerStyles={{ background: 'rgba(0,0,0,0)' }} />
+      {/* <Loader containerStyles={{ background: 'rgba(0,0,0,0)' }} /> */}
     </div>
   )
 }

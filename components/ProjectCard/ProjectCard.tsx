@@ -49,7 +49,7 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
                 target={newTab ? '_blank' : undefined}
                 rel={newTab ? 'noopener noreferrer' : undefined}
               >
-                <h3 className="fancy h-10">{project.title}</h3>
+                <h3 className="fancy h-12">{project.title}</h3>
               </a>
             </Link>
 
@@ -73,7 +73,7 @@ const ProjectCard: FC<PropsWithChildren<ProjectProps & StyleProps>> = ({
           </>
         ) : (
           <>
-            <h3 className="fancy h-10">{project.title}</h3>
+            <h3 className="fancy h-12">{project.title}</h3>
             <ImageLoader
               src={project.imageUrl}
               alt={`Image of ${project.title}`}

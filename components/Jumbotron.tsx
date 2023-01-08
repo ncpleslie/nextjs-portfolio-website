@@ -23,7 +23,7 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
         <div className="flex w-full items-center justify-center">
           {props.children}
         </div>
-        <div className="mb-10 flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2">
           <div className="hidden flex-row gap-4 lg:flex">
             {props.subheading.map((sub, i) => (
               <h2 key={i} className={'w-[300px]'}>
@@ -32,7 +32,9 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
             ))}
           </div>
           <DividerLine fancy />
-          <p className="max-w-[75ch]">{props.description}</p>
+          <div className="flex w-screen justify-center bg-gradient-to-t from-black pb-10">
+            <p className="max-w-[75ch]">{props.description}</p>
+          </div>
         </div>
         <ThreeDLoader />
         <BackgroundAnimation />
