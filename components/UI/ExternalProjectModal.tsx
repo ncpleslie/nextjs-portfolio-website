@@ -57,7 +57,7 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="m-2 flex h-full w-full transform flex-col overflow-hidden rounded-2xl border-2 border-skin-dark-accent bg-skin-fill p-2 text-left align-middle shadow-xl transition-all md:m-8 md:p-6">
+                <Dialog.Panel className="m-2 flex h-full w-full transform flex-col overflow-hidden rounded-2xl border-2 border-skin-dark-accent bg-skin-fill p-2 text-left align-middle shadow-xl transition-all md:m-8 md:w-fit md:p-6">
                   <div className="flex flex-row items-center justify-between p-2 md:p-0">
                     <Dialog.Title as="h2" className="fancy mb-4">
                       {project.title}
