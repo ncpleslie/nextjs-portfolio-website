@@ -25,17 +25,17 @@ const NavMenu: FC<NavMenuProps & StyleProps> = ({ className, links }) => {
               <div
                 className={`h-0.5 w-8 bg-gray-600 ${
                   open && 'rotate-45'
-                } transition`}
+                } transition duration-200`}
               ></div>
               <div
                 className={`h-0.5 w-8 bg-gray-600 ${
-                  open && 'hidden'
-                } transition`}
+                  open && 'translate-x-20'
+                } transition duration-200`}
               ></div>
               <div
                 className={`h-0.5 w-8 bg-gray-600 ${
                   open && '-rotate-45'
-                } transition`}
+                } transition duration-200`}
               ></div>
             </Menu.Button>
             <StaggeredTransition>

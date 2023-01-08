@@ -23,7 +23,7 @@ const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
   }
 
   return (
-    <div className={classNames(`relative aspect-video w-full ${className}`)}>
+    <div className={classNames(`relative aspect-video ${className}`)}>
       <img
         src={src}
         onLoad={handleOnLoad}

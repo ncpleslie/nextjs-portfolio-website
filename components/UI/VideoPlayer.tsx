@@ -15,7 +15,10 @@ const VideoPlayer: FC<{ url: string; title: string } & StyleProps> = ({
   )
 
   return (
-    <div className={classNames(`aspect-video w-full ${className}`)}>
+    <div
+      className={classNames(`aspect-video w-full ${className}`)}
+      style={{ maxHeight: 243, maxWidth: 432 }}
+    >
       <LiteYouTubeEmbed
         id={videoId}
         adNetwork={false}

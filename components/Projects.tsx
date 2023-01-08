@@ -23,7 +23,7 @@ const Projects: FC<ProjectsProps & ErrorProps> = ({ error, projects }) => {
             <ProjectCard
               project={project}
               key={project.id}
-              className="w-screen flex-[0_1_95%] md:max-w-[30rem]"
+              className="w-full flex-[0_1_95%] md:max-w-[30rem]"
             />
           ))}
       </div>
