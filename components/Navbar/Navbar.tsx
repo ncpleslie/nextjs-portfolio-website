@@ -56,7 +56,7 @@ const Navbar: FC<NavbarProps> = ({ links, name }) => {
 
     // Animation for scrolling up
     boxes.forEach((box) => {
-      const x = box.button?.offsetLeft - 100
+      const x = box.button?.offsetLeft - 200
       const y = 0
 
       // Tween to 0 to remove the transforms
