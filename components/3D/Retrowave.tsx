@@ -6,8 +6,9 @@ import * as THREE from 'three'
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { EffectComposer, SelectiveBloom } from '@react-three/postprocessing'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import StyleProps from '../../props/style.props'
+import { KernelSize } from 'postprocessing'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -30,21 +31,15 @@ export default function Model({
     '/retrowave-transformed.glb'
   ) as unknown as GLTFResult
 
-  const sunRef = useRef()
-  const lightRef = useRef()
-  const mountainsRef = useRef()
-  const groupRef = useRef()
-
   return (
     <>
-      <group ref={groupRef} {...props} dispose={null}>
+      <group {...props} dispose={null}>
         <group
           name="Camera"
           position={[0, 0.54, -8]}
           rotation={[1.54, 0, Math.PI]}
         >
           <mesh
-            ref={sunRef}
             geometry={nodes.Sphere.geometry}
             material-color="rgb(255, 138, 0)"
             position={[0, -150, 9.55]}
@@ -59,36 +54,26 @@ export default function Model({
             material-color="rgb(23, 20, 29)"
           />
           <mesh
-            ref={mountainsRef}
             geometry={nodes.Plane_2.geometry}
             position={[0, -0.05, -35]}
             material-color="rgb(229, 46, 113)"
           />
         </group>
       </group>
-      <directionalLight
-        color="#ffffff"
-        intensity={0.25}
-        position={[0, -1, 0]}
-        ref={lightRef}
-      />
 
-      {lightRef && (
-        <EffectComposer>
-          <SelectiveBloom
-            mipmapBlur
-            lights={[lightRef]}
-            selection={[sunRef, mountainsRef]}
-            intensity={15}
-            radius={0.75}
-            selectionLayer={1}
-            luminanceThreshold={0}
-            luminanceSmoothing={1}
-            height={1080}
-            width={1920}
-          />
-        </EffectComposer>
-      )}
+      <EffectComposer
+        disableNormalPass={true}
+        autoClear={true}
+        multisampling={4}
+      >
+        <Bloom
+          mipmapBlur
+          intensity={10}
+          luminanceThreshold={0}
+          luminanceSmoothing={1}
+          kernelSize={KernelSize.SMALL}
+        />
+      </EffectComposer>
     </>
   )
 }
