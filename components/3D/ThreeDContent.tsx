@@ -34,7 +34,7 @@ const ThreeDContent: React.FC<StyleProps> = () => {
       <Canvas
         className={`h-screen`}
         gl={{ antialias: true, alpha: true }}
-        camera={{ position: [0, 0.05, 0.5], fov: 25, far: 5000, near: 0.1 }}
+        camera={{ position: [0, 0.05, 0.5], fov: 25, far: 3000 }}
         onCreated={({ camera }) => {
           camera.lookAt(0, 0, 180)
           camera.position.z = -zOffset

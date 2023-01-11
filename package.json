@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run clean && next build",
-    "browser_test": "yarn playwright test --headed"
+    "browser_test": "yarn playwright test --headed",
+    "convert_model": "yarn gltfjsx retrowave_reduced.gltf --output retrowave --types --keepnames --transform"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
