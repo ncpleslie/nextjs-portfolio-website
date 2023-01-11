@@ -1,21 +1,41 @@
 import { AdaptiveDpr, useProgress } from '@react-three/drei'
-import { Canvas, useFrame } from '@react-three/fiber'
-import React, { Suspense } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import React, { Suspense, useEffect } from 'react'
 import StyleProps from '../../props/style.props'
 import Retrowave from './Retrowave'
 
 const maxZ = -100
 const zOffset = 250
 
+function FrameLimiter({ limit }) {
+  const { invalidate, clock, advance } = useThree()
+  useEffect(() => {
+    let delta = 0
+    const interval = 1 / limit
+    const update = () => {
+      requestAnimationFrame(update)
+      delta += clock.getDelta()
+
+      if (delta > interval) {
+        invalidate()
+        delta = delta % interval
+      }
+    }
+
+    update()
+  }, [])
+
+  return null
+}
 function Dolly() {
   // This one makes the camera move in and out
   useFrame(({ clock, camera }) => {
     if (camera.position.z >= maxZ) {
-      camera.position.z = maxZ - (clock.getElapsedTime() * 0.1 - zOffset)
+      camera.position.z = maxZ - (clock.getElapsedTime() * 0.08 - zOffset)
 
       return
     }
-    camera.position.z = clock.getElapsedTime() * 0.1 - zOffset
+    camera.position.z = clock.getElapsedTime() * 0.08 - zOffset
   })
   return null
 }
@@ -45,6 +65,7 @@ const ThreeDContent: React.FC<StyleProps> = () => {
         </Suspense>
         <AdaptiveDpr pixelated />
         <Dolly />
+        <FrameLimiter limit={15} />
       </Canvas>
     </div>
   )
