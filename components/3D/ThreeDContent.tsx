@@ -1,4 +1,4 @@
-import { Loader, useProgress } from '@react-three/drei'
+import { AdaptiveDpr, useProgress } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import React, { Suspense } from 'react'
 import StyleProps from '../../props/style.props'
@@ -43,9 +43,9 @@ const ThreeDContent: React.FC<StyleProps> = () => {
         <Suspense fallback={null}>
           <Retrowave />
         </Suspense>
+        <AdaptiveDpr pixelated />
         <Dolly />
       </Canvas>
-      {/* <Loader containerStyles={{ background: 'rgba(0,0,0,0)' }} /> */}
     </div>
   )
 }
