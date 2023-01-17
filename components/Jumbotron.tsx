@@ -38,6 +38,10 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
       return
     }
 
+    console.warn(
+      `This device may not be able to run this 3D scene performantly. 
+Starting this browser with dedicated GPU support could remedy this issue.`
+    )
     const backgroundAnimation = dynamic(
       () => import('./3D/ThreeDContentBackup'),
       {
@@ -64,7 +68,7 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
             ))}
           </div>
           <DividerLine fancy />
-          <div className="flex w-full justify-center bg-gradient-to-t from-black pb-10">
+          <div className="flex w-full justify-center bg-gradient-to-t from-black via-black/80 pb-10">
             <p className="max-w-[75ch]">{props.description}</p>
           </div>
         </div>
