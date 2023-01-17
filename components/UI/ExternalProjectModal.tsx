@@ -1,11 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 import { LinkType } from '../../enums/link-type.enum'
 import Project from '../../models/project.model'
 import TechnologyPill from '../ProjectCard/TechnologyPill'
 import Button from './Button'
 import DividerLine from './DividerLine'
+import LoadingIndicator from './LoadingIndicator'
 
 interface ExternalProjectModalProps {
   project?: Project
@@ -16,8 +16,8 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
   project,
   onClose,
 }) => {
-  const router = useRouter()
   const [isOpen, setIsOpen] = useState(true)
+  const [loading, setLoading] = useState(true)
 
   function closeModal() {
     setIsOpen(false)
@@ -70,11 +70,17 @@ const ExternalProjectModal: React.FC<ExternalProjectModalProps> = ({
                       <div className="h-0.5 w-8 rotate-45 bg-accent1"></div>
                     </button>
                   </div>
-                  <div className="flex h-full w-full flex-col items-center justify-start overflow-y-auto p-1 md:p-0">
+                  <div className="relative flex h-full w-full flex-col items-center justify-start overflow-y-auto p-1 md:p-0">
                     <iframe
                       className="h-5/6 w-full bg-white md:rounded-2xl md:border-2 md:border-skin-dark-accent"
                       src={project.projectUrl}
+                      onLoad={() => setLoading(false)}
                     ></iframe>
+                    {loading && (
+                      <div className="absolute top-1/3 z-10">
+                        <LoadingIndicator />
+                      </div>
+                    )}
                     <div className="my-4">
                       <p>{project.description}</p>
                     </div>

@@ -1,12 +1,16 @@
-import { FC, PropsWithChildren } from 'react'
+import {
+  ComponentType,
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from 'react'
 import DividerLine from './UI/DividerLine'
 import dynamic from 'next/dynamic'
 import ThreeDLoader from './3D/ThreeDLoader'
 import Link from '../models/link.model'
-
-const BackgroundAnimation = dynamic(() => import('./3D/ThreeDContent'), {
-  ssr: false,
-})
+import StyleProps from '../props/style.props'
+import { canRun3dScene } from '../utils/helpers.util'
 
 export interface JumbotronProps {
   description: string
@@ -16,6 +20,34 @@ export interface JumbotronProps {
 }
 
 const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
+  const [BackgroundAnimation, setBackgroundAnimation] =
+    useState<ComponentType<StyleProps>>()
+  const [BackgroundAnimationBackup, setBackgroundAnimationBackup] =
+    useState<ComponentType<StyleProps>>()
+
+  useEffect(() => {
+    // Determine if this computer can run the threejs scene
+    const canRun = canRun3dScene()
+    if (canRun) {
+      const backgroundAnimation = dynamic(() => import('./3D/ThreeDContent'), {
+        ssr: false,
+      })
+
+      setBackgroundAnimation(backgroundAnimation)
+
+      return
+    }
+
+    const backgroundAnimation = dynamic(
+      () => import('./3D/ThreeDContentBackup'),
+      {
+        ssr: false,
+      }
+    )
+
+    setBackgroundAnimationBackup(backgroundAnimation)
+  }, [])
+
   return (
     <>
       <header className="z-10 flex h-screen w-full flex-col items-center justify-between text-center">
@@ -37,7 +69,8 @@ const Jumbotron: FC<PropsWithChildren<JumbotronProps>> = (props) => {
           </div>
         </div>
         <ThreeDLoader />
-        <BackgroundAnimation />
+        {BackgroundAnimation && <BackgroundAnimation />}
+        {BackgroundAnimationBackup && <BackgroundAnimationBackup />}
       </header>
       <DividerLine fancy full />
     </>
