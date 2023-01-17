@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "predeploy": "npm run clean && next build",
     "browser_test": "yarn playwright test --headed",
     "convert_model": "yarn gltfjsx retrowave_reduced.gltf --output retrowave --types --keepnames --transform"

@@ -12,5 +12,5 @@ export const canRun3dScene = (): boolean => {
   canvas.remove()
 
   // Intel graphics are unable to render 3d scenes without stuttering/causing performance issues.
-  return !vendor.includes('intel')
+  return !vendor.toLowerCase().includes('intel')
 }
