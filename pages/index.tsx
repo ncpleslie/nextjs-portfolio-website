@@ -68,7 +68,9 @@ const Home: FC<
     const projectQuery = router.query.project
     if (projectQuery) {
       const project = projects.find((project) => project.id === projectQuery)
-      setModalProject(project)
+      if (!project.excludeExample) {
+        setModalProject(project)
+      }
 
       return
     }

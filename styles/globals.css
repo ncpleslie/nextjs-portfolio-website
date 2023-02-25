@@ -65,7 +65,7 @@
   }
 
   h2 {
-    @apply text-2xl sm:text-3xl lg:text-4xl;
+    @apply text-2xl sm:text-4xl lg:text-5xl;
     font-family: 'Share Tech Mono', monospace;
   }
 
@@ -112,6 +112,18 @@
   }
 
   .fancy {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--color-accent1)),
+      rgb(var(--color-accent2))
+    );
+    text-shadow: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .fancy-hover:hover {
     background: linear-gradient(
       90deg,
       rgb(var(--color-accent1)),

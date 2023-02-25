@@ -28,7 +28,7 @@ const Contact: React.FC<ContactProps & StyleProps> = (props) => {
       <DividerLine className="my-6" />
 
       <form
-        className="flex w-full flex-col px-8 md:w-[60%] md:px-0"
+        className="flex w-full flex-col items-center px-8 md:w-[60%] md:px-0"
         action={props.formSpringUrl}
         method="POST"
       >
@@ -54,7 +54,7 @@ const Contact: React.FC<ContactProps & StyleProps> = (props) => {
           Your Message
         </ContactTextarea>
 
-        <button className="btn text-gray-400" type="submit">
+        <button className="btn max-w-lg text-gray-400" type="submit">
           Send me a message
         </button>
       </form>

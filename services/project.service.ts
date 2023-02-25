@@ -14,6 +14,6 @@ export default class ProjectService extends BaseService {
   public async getProjects(): Promise<Project[]> {
     const projects = (await this.db.getProjects()).projects
 
-    return projects.sort((a, b) => (a.order < b.order ? -1 : 1))
+    return projects.sort((a, b) => (a.order < b.order ? 1 : -1))
   }
 }

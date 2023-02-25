@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { FC, useState } from 'react'
 import StyleProps from '../../props/style.props'
+import LoadingIndicator from './LoadingIndicator'
 
 interface ImageLoaderProps {
   src: string
@@ -27,12 +28,17 @@ const ImageLoader: FC<ImageLoaderProps & StyleProps> = ({
       <img
         src={src}
         onLoad={handleOnLoad}
-        alt={alt}
+        alt={isLoading ? '' : alt}
         height={height ? height : undefined}
         width={width ? width : undefined}
         loading="lazy"
       />
-      {isLoading && <div className="absolute top-0 z-10">Loading...</div>}
+      {isLoading && (
+        <div
+          className="absolute top-0 z-10 aspect-video animate-pulse bg-skin-button-base"
+          style={{ height: height ?? undefined, width: width ?? undefined }}
+        ></div>
+      )}
     </div>
   )
 }

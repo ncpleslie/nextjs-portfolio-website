@@ -12,7 +12,7 @@ const Projects: FC<ProjectsProps & ErrorProps> = ({ error, projects }) => {
   return (
     <div className="flex flex-col items-center bg-skin-fill-accent py-10">
       <h2 className="fancy my-4 flex justify-center" id="projects">
-        Projects
+        Personal Projects
       </h2>
       <DividerLine className="mb-8" />
       <div className="flex flex-wrap justify-center gap-8">
